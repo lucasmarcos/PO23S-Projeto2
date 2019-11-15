@@ -23,11 +23,19 @@ public class LoginController {
 	void entrar(ActionEvent event) {
 		DAOUsuario daoUsuario = Main.getDAOUsuario();
 		if(daoUsuario.login(usuario.getText(), senha.getText())) {
+			senha.clear();
+			info.setVisible(false);
+			
 			Main.listarFornecedores();
 		} else {
 			info.setVisible(true);
 			senha.clear();
 			usuario.requestFocus();
 		}
+	}
+
+	@FXML
+	void sair(ActionEvent event) {
+		Main.sair();
 	}
 }

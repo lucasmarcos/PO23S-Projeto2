@@ -4,6 +4,8 @@ import conexao.Conexao;
 import dao.DAOUsuario;
 import dao.DAOFornecedor;
 import entidades.Usuario;
+import gui.FornecedorController;
+import gui.ListarFornecedoresController;
 
 import java.net.URL;
 import javafx.application.Application;
@@ -15,9 +17,13 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	private static Scene loginScene;
 	private static Scene cadastroScene;
-	private static Scene fornecedoresScene;
-	private static Scene listaFornecedoresScene;
 
+	private static FornecedorController fornecedorController;
+	private static Scene fornecedorScene;
+
+	private static Scene listaFornecedoresScene;
+	private static ListarFornecedoresController listaFornecedoresController;
+	
 	private static Stage stage;
 
 	private static DAOUsuario daoUsuario;
@@ -41,29 +47,37 @@ public class Main extends Application {
 	}
 
 	public static void listarFornecedores() {
+		listaFornecedoresController.atualizar();
+		
 		stage.setResizable(true);
 		stage.setScene(listaFornecedoresScene);
 	}
 
 	public static void logar() {
-		stage.setResizable(true);
-		stage.setScene(loginScene);
 		stage.setResizable(false);
+		stage.setScene(loginScene);
 	}
 
 	public static void cadastrarFornecedor() {
-		stage.setResizable(true);
-		stage.setScene(fornecedoresScene);
+		stage.setResizable(false);
+		stage.setScene(fornecedorScene);
+	}
+
+	public static void alterarFornecedor() {
+		stage.setResizable(false);
+		stage.setScene(fornecedorScene);
 	}
 
 	public static void cadastrarUsuario() {
-		stage.setResizable(true);
+		stage.setResizable(false);
 		stage.setScene(cadastroScene);
 	}
 
 	public static void main(String args[]) {
 		Conexao conexao = new Conexao();
 
+		usuarioAtual = new Usuario();
+		
 		daoUsuario = new DAOUsuario(conexao);
 		daoFornecedor = new DAOFornecedor(conexao);
 
@@ -74,6 +88,7 @@ public class Main extends Application {
 		Main.stage = stage;
 		Parent root;
 		URL caminho;
+		FXMLLoader loader;
 
 		try {
 			caminho = getClass().getResource("/Login.fxml");
@@ -85,11 +100,15 @@ public class Main extends Application {
 			Main.cadastroScene = new Scene(root);
 
 			caminho = getClass().getResource("/Fornecedor.fxml");
-			root = FXMLLoader.load(caminho);
-			Main.fornecedoresScene = new Scene(root);
+			loader = new FXMLLoader(caminho);
+			root = (Parent) loader.load();
+			Main.fornecedorController = (FornecedorController) loader.getController();
+			Main.fornecedorScene = new Scene(root);
 
 			caminho = getClass().getResource("/ListarFornecedores.fxml");
-			root = FXMLLoader.load(caminho);
+			loader = new FXMLLoader(caminho);
+			root = (Parent) loader.load();
+			Main.listaFornecedoresController = (ListarFornecedoresController) loader.getController();
 			Main.listaFornecedoresScene = new Scene(root);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,5 +116,9 @@ public class Main extends Application {
 
 		logar();
 		stage.show();
+	}
+	
+	public static void sair() {
+		stage.close();
 	}
 }

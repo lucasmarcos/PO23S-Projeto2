@@ -26,7 +26,6 @@ public class CadastroController {
 
 	@FXML
 	void cadastrar(ActionEvent event) {
-
 	}
 
 	@FXML

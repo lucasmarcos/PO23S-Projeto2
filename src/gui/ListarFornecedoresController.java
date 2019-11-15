@@ -1,7 +1,9 @@
 package gui;
 
+import dao.DAOFornecedor;
 import main.Main;
 import entidades.Fornecedor;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,13 +19,15 @@ public class ListarFornecedoresController {
 	private TextField filtro;
 
 	@FXML
-	private ListView<Fornecedor> fornecedores;
+	private ListView<String> fornecedores;
 
 	@FXML
 	private Label usuario;
 
 	@FXML
 	void alterar(ActionEvent event) {
+		String item = fornecedores.getSelectionModel().getSelectedItem();
+		System.out.println(item);
 	}
 
 	@FXML
@@ -38,6 +42,13 @@ public class ListarFornecedoresController {
 
 	@FXML
 	void filtrar(ActionEvent event) {
+		DAOFornecedor dao = Main.getDAOFornecedor();
+		List<Fornecedor> lista = dao.pesquisar(filtro.getText());
+
+		fornecedores.getItems().clear();
+		for(int i = 0; i < lista.size(); i++) {
+			fornecedores.getItems().add(lista.get(i).getNome());
+		}
 	}
 
 	@FXML
@@ -47,5 +58,15 @@ public class ListarFornecedoresController {
 	@FXML
 	void sair(ActionEvent event) {
 		Main.logar();
+	}
+	
+	public void atualizar() {
+		filtrar(new ActionEvent());
+		usuario.setText(Main.getUsuarioAtual().getNome());
+		if(Main.getUsuarioAtual().getAdministrador()) {
+			nivel.setText("Administrador");
+		} else {
+			nivel.setText("Empregado");
+		}
 	}
 }

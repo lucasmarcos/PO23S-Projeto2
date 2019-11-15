@@ -2,6 +2,7 @@ package conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Conexao {
@@ -34,15 +35,16 @@ public class Conexao {
 		return false;
 	}
 
-	public void inserir() {
-	}
-
-	public void atualizar() {
-	}
-
-	public void buscar() {
-	}
-
-	public void pesquisar() {
+	public ResultSet buscar(String sql) {
+		ResultSet rs = null;
+		
+		try {
+			Statement stm = connection.createStatement();
+			rs = stm.executeQuery(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return rs;
 	}
 }
