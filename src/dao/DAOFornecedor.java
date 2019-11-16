@@ -5,6 +5,7 @@ import entidades.Fornecedor;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import main.Main;
 
 public class DAOFornecedor {
 	private Conexao conexao;
@@ -25,13 +26,34 @@ public class DAOFornecedor {
 	}
 
 	public Fornecedor buscar(int codigo) {
-		return new Fornecedor();
+		Fornecedor fornecedor = new Fornecedor();
+		String sql = "SELECT codigo, nome, telefone, cnpj, rua, bairro, cep " + 
+			"FROM fornecedor WHERE codigo = " + codigo + ";";
+		
+		try {
+			ResultSet rs = conexao.buscar(sql);
+			rs.next();
+			
+			fornecedor.setCodigo(rs.getInt("codigo"));
+			fornecedor.setNome(rs.getString("nome"));
+			fornecedor.setTelefone(rs.getString("telefone"));
+			fornecedor.setCnpj(rs.getString("cnpj"));
+			fornecedor.setRua(rs.getString("rua"));
+			fornecedor.setBairro(rs.getString("bairro"));
+			fornecedor.setCep(rs.getString("cep"));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return fornecedor;
 	}
 
-	public List<Fornecedor> pesquisar(String filtro) {
+	public List<Fornecedor> pesquisar(String campo, String filtro) {
 		List<Fornecedor> lista = new ArrayList<Fornecedor>();
 		
-		String sql = "SELECT codigo, nome, telefone, cnpj, rua, bairro, cep FROM fornecedor WHERE nome ILIKE '%" + filtro + "%';";
+		String sql = "SELECT codigo, nome, telefone, cnpj, rua, bairro, cep " + 
+			"FROM fornecedor WHERE " + campo + " ILIKE '%" + filtro + "%';";
+		
 		try {
 			ResultSet rs = conexao.buscar(sql);
 			while(rs.next()) {
@@ -53,10 +75,24 @@ public class DAOFornecedor {
 		return lista;
 	}
 
-	
 	public void alterar(Fornecedor fornecedor) { // admin
+		String sql = "UPDATE fornecedor " + 
+			"SET nome = '" + fornecedor.getNome() + "', " +
+			"telefone = '" + fornecedor.getTelefone()+ "', " +
+			"cnpj = '" + fornecedor.getCnpj()+ "', " +
+			"rua = '" + fornecedor.getRua()+ "', " +
+			"bairro = '" + fornecedor.getBairro()+ "', " +
+			"cep = '" + fornecedor.getCep()+ "' " +
+			"WHERE codigo = " + fornecedor.getCodigo() + ";";
+		conexao.executarSQL(sql);
 	}
 
 	public void deletar(Fornecedor fornecedor) { // admin
+		String sql = "DELETE FROM fornecedor WHERE codigo = " + fornecedor.getCodigo() + ";";
+		try {
+			conexao.executarSQL(sql);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

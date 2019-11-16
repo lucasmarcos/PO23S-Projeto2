@@ -3,6 +3,7 @@ package main;
 import conexao.Conexao;
 import dao.DAOUsuario;
 import dao.DAOFornecedor;
+import entidades.Fornecedor;
 import entidades.Usuario;
 import gui.FornecedorController;
 import gui.ListarFornecedoresController;
@@ -59,11 +60,15 @@ public class Main extends Application {
 	}
 
 	public static void cadastrarFornecedor() {
+		fornecedorController.setFornecedor(null);
+		
 		stage.setResizable(false);
 		stage.setScene(fornecedorScene);
 	}
 
-	public static void alterarFornecedor() {
+	public static void alterarFornecedor(Fornecedor fornecedor) {
+		fornecedorController.setFornecedor(fornecedor);
+		
 		stage.setResizable(false);
 		stage.setScene(fornecedorScene);
 	}
@@ -75,6 +80,8 @@ public class Main extends Application {
 
 	public static void main(String args[]) {
 		Conexao conexao = new Conexao();
+		
+		boolean primeiroUsuario = false;
 
 		usuarioAtual = new Usuario();
 		

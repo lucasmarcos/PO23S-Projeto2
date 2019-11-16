@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListarFornecedoresController">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListarFornecedoresController">
    <children>
       <HBox VBox.vgrow="NEVER">
          <children>
@@ -53,13 +53,17 @@
             </VBox>
             <TableView fx:id="fornecedores" HBox.hgrow="ALWAYS">
               <columns>
-                <TableColumn editable="false" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" sortable="false" text="Nome" />
-                <TableColumn editable="false" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" sortable="false" text="CNPJ" />
-                  <TableColumn editable="false" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" sortable="false" text="Endereco" />
+                <TableColumn fx:id="colunaNome" editable="false" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" sortable="false" text="Nome" />
+                  <TableColumn fx:id="colunaTelefone" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" text="Telefone" />
+                <TableColumn fx:id="colunaCnpj" editable="false" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" sortable="false" text="CNPJ" />
+                  <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" sortable="false" text="Endereço">
+                     <columns>
+                        <TableColumn fx:id="colunaRua" editable="false" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" sortable="false" text="Rua" />
+                        <TableColumn fx:id="colunaBairro" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" text="Bairro" />
+                        <TableColumn fx:id="colunaCep" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" text="CEP" />
+                     </columns>
+                  </TableColumn>
               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
             </TableView>
          </children>
          <VBox.margin>
