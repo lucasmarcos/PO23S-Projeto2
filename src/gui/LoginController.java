@@ -1,5 +1,6 @@
 package gui;
 
+import entidades.Usuario;
 import main.Main;
 import dao.DAOUsuario;
 
@@ -19,14 +20,21 @@ public class LoginController {
 	@FXML
 	private Label info;
 
+	private DAOUsuario daoUsuario;
+
+	public void setDaoUsuario(DAOUsuario daoUsuario) {
+		this.daoUsuario = daoUsuario;
+	}
+
 	@FXML
 	void entrar(ActionEvent event) {
-		DAOUsuario daoUsuario = Main.getDAOUsuario();
-		if(daoUsuario.login(usuario.getText(), senha.getText())) {
+		Usuario u = daoUsuario.login(usuario.getText(), senha.getText());
+
+		if(u != null) {
 			senha.clear();
 			info.setVisible(false);
-			
-			Main.listarFornecedores();
+
+			Main.listarFornecedores(u);
 		} else {
 			info.setVisible(true);
 			senha.clear();

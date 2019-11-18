@@ -38,8 +38,8 @@
          <children>
             <VBox spacing="10.0" HBox.hgrow="NEVER">
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#remover" text="Remover" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#alterar" text="Alterar" />
+                  <Button fx:id="botao_remover" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#remover" text="Remover" />
+                  <Button fx:id="botao_alterar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#alterar" text="Alterar" />
                   <Separator VBox.vgrow="NEVER">
                      <VBox.margin>
                         <Insets />
@@ -48,7 +48,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Separator>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cadastrarFornecedor" text="Cadastrar" />
+                  <Button fx:id="botao_cadastrar_fornecedor" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cadastrarFornecedor" text="Cadastrar" />
                </children>
             </VBox>
             <TableView fx:id="fornecedores" HBox.hgrow="ALWAYS">
@@ -73,7 +73,7 @@
       <HBox alignment="CENTER_LEFT" spacing="10.0" VBox.vgrow="NEVER">
          <children>
             <Label fx:id="usuario" maxWidth="1.7976931348623157E308" text="Usuario Atual" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Novo Usuario" HBox.hgrow="NEVER" />
+            <Button fx:id="botao_cadastrar_usuario" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Novo Usuario" HBox.hgrow="NEVER" />
             <Button mnemonicParsing="false" onAction="#sair" text="Sair" HBox.hgrow="NEVER" />
          </children>
          <VBox.margin>

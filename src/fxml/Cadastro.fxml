@@ -11,37 +11,26 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane hgap="10.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.202-ea" fx:controller="gui.CadastroController">
-  <columnConstraints>
-    <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
-  </columnConstraints>
-  <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
-    <RowConstraints />
-    <RowConstraints />
-    <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-  </rowConstraints>
+<GridPane hgap="10.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastroController">
    <children>
-      <TextField fx:id="nome" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
-      <TextField fx:id="email" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-      <PasswordField fx:id="senha" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
-      <PasswordField fx:id="verificar_senha" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
-      <CheckBox fx:id="administrador" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Administrador" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
-      <Button defaultButton="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cadastrar" text="Salvar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
-      <Label text="Nome" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" />
-      <Label text="E-mail" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" />
-      <Label text="Senha" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" />
-      <Label text="Verificar Senha" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="4" />
-      <Button cancelButton="true" mnemonicParsing="false" onAction="#voltar" text="Voltar" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Usuário" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+      <TextField fx:id="nome" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+      <TextField fx:id="email" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+      <PasswordField fx:id="senha" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
+      <PasswordField fx:id="verificar_senha" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
+      <CheckBox fx:id="administrador" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Administrador" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
+      <Button defaultButton="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cadastrar" text="Salvar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" />
+      <Label text="Nome" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <Label text="E-mail" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+      <Label text="Senha" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+      <Label text="Confirmar Senha" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+      <Button fx:id="botao_voltar" cancelButton="true" mnemonicParsing="false" onAction="#voltar" text="Voltar" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+      <Label contentDisplay="CENTER" text="Usuário" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <Label fx:id="label_senha" text="As senhas não conferem" textFill="RED" visible="false" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
+      <Label fx:id="label_primerio" text="Prímeiro" textFill="#fa8214" visible="false" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER"/>
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

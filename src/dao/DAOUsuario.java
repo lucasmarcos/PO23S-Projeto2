@@ -13,6 +13,13 @@ public class DAOUsuario {
 	}
 
 	public void inserir(Usuario usuario) {
+		String sql = "INSERT INTO usuario (nome, email, senha, administrador) VALUES ('" +
+			usuario.getNome() + "', '" +
+			usuario.getEmail() + "', '" +
+			usuario.getSenha() + "', " +
+			usuario.getAdministrador() + ");";
+
+		conexao.executarSQL(sql);
 	}
 
 	public Usuario buscar(int codigo) {
@@ -34,7 +41,7 @@ public class DAOUsuario {
 		return usuario;
 	}
 
-	public boolean login(String email, String senha) {
+	public Usuario login(String email, String senha) {
 		String sql = "SELECT codigo FROM usuario WHERE" +
 			" email = '" + email +
 			"' AND senha = '" + senha + "';";
@@ -43,13 +50,24 @@ public class DAOUsuario {
 		try {
 			rs.next();
 			int codigo = rs.getInt("codigo");
-			
-			Usuario usuario = buscar(codigo);
-			Main.setUsuarioAtual(usuario);
-	
-			return true;
+			return buscar(codigo);
 		} catch(Exception e) {
-			return false;
+			return null;
 		}
+	}
+
+	public boolean primeiroLogin() {
+		String sql = "SELECT COUNT(codigo) FROM usuario;";
+		ResultSet rs = conexao.buscar(sql);
+		int usuarios = 0;
+
+		try {
+			rs.next();
+			usuarios = rs.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return usuarios == 0;
 	}
 }
