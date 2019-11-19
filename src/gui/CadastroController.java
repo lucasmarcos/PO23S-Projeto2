@@ -57,7 +57,7 @@ public class CadastroController {
 		usuario.setEmail(email.getText());
 		usuario.setAdministrador(administrador.isSelected());
 
-		if(senha.getText().equals(verificar_senha.getText())) {
+		if(senha.getText().equals(verificar_senha.getText()) && !senha.getText().isEmpty()) {
 			usuario.setSenha(senha.getText());
 			daoUsuario.inserir(usuario);
 			if(!primeiroUsuario) {
