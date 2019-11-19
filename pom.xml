@@ -1,71 +1,70 @@
 <project>
-    <name>PO23S Projeto 2</name>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>po23s_projeto2</groupId>
-    <artifactId>po23s_projeto2</artifactId>
-    <version>0</version>
+	<name>PO23S Projeto 2</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>po23s_projeto2</groupId>
+	<artifactId>po23s_projeto2</artifactId>
+	<version>0</version>
 
-    <build>
-        <sourceDirectory>src</sourceDirectory>
-        
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <mainClass>main.Main</mainClass>
-                            </manifest>
-			</archive>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
 
-        <resources>
-            <resource>
-                <directory>src/fxml</directory>
-                <includes>
-                    <include>*.fxml</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<manifest>
+								<mainClass>main.Main</mainClass>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.8</version>
-        </dependency>
+		<resources>
+			<resource>
+				<directory>src/fxml</directory>
+				<includes>
+					<include>*.fxml</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
 
-        <!--
+	<dependencies>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
 
-        <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>11</version>
-        </dependency>
+		<!--
 
-        <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-fxml</artifactId>
-        <version>11</version>
-        </dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>11</version>
+		</dependency>
 
-        <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-graphics</artifactId>
-        <version>11</version>
-        </dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>11</version>
+		</dependency>
 
-        <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-base</artifactId>
-        <version>11</version>
-        </dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>11</version>
+		</dependency>
 
-        -->
-    </dependencies>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-base</artifactId>
+			<version>11</version>
+		</dependency>
+
+		-->
+	</dependencies>
 </project>
