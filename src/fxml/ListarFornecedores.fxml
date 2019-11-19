@@ -30,9 +30,6 @@
             <ChoiceBox fx:id="campo" HBox.hgrow="NEVER" />
             <Button defaultButton="true" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" HBox.hgrow="NEVER" />
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
       </HBox>
       <HBox spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
@@ -41,9 +38,6 @@
                   <Button fx:id="botao_remover" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#remover" text="Remover" />
                   <Button fx:id="botao_alterar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#alterar" text="Alterar" />
                   <Separator VBox.vgrow="NEVER">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
@@ -53,22 +47,19 @@
             </VBox>
             <TableView fx:id="fornecedores" HBox.hgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="colunaNome" editable="false" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" sortable="false" text="Nome" />
-                  <TableColumn fx:id="colunaTelefone" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" text="Telefone" />
-                <TableColumn fx:id="colunaCnpj" editable="false" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" sortable="false" text="CNPJ" />
-                  <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" sortable="false" text="Endereço">
+                <TableColumn fx:id="colunaNome" editable="false" minWidth="64.0" text="Nome" />
+                  <TableColumn fx:id="colunaTelefone" editable="false" minWidth="64.0" text="Telefone" />
+                <TableColumn fx:id="colunaCnpj" editable="false" minWidth="64.0" text="CNPJ" />
+                  <TableColumn editable="false" sortable="false" text="Endereço">
                      <columns>
-                        <TableColumn fx:id="colunaRua" editable="false" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" sortable="false" text="Rua" />
-                        <TableColumn fx:id="colunaBairro" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" text="Bairro" />
-                        <TableColumn fx:id="colunaCep" maxWidth="1.7976931348623157E308" minWidth="64.0" prefWidth="-1.0" text="CEP" />
+                        <TableColumn fx:id="colunaRua" editable="false" minWidth="64.0" text="Rua" />
+                        <TableColumn fx:id="colunaBairro" editable="false" minWidth="64.0" text="Bairro" />
+                        <TableColumn fx:id="colunaCep" editable="false" minWidth="64.0" text="CEP" />
                      </columns>
                   </TableColumn>
               </columns>
             </TableView>
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
       </HBox>
       <HBox alignment="CENTER_LEFT" spacing="10.0" VBox.vgrow="NEVER">
          <children>
@@ -76,9 +67,6 @@
             <Button fx:id="botao_cadastrar_usuario" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Novo Usuario" HBox.hgrow="NEVER" />
             <Button mnemonicParsing="false" onAction="#sair" text="Sair" HBox.hgrow="NEVER" />
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
       </HBox>
    </children>
    <padding>

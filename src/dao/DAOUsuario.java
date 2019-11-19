@@ -3,7 +3,6 @@ package dao;
 import conexao.Conexao;
 import entidades.Usuario;
 import java.sql.ResultSet;
-import main.Main;
 
 public class DAOUsuario {
 	private Conexao conexao;
@@ -35,7 +34,7 @@ public class DAOUsuario {
 			usuario.setSenha(rs.getString("senha"));
 			usuario.setAdministrador(rs.getBoolean("administrador"));
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao buscar usuario: " + e.getMessage());
 		}
 		
 		return usuario;
@@ -65,9 +64,9 @@ public class DAOUsuario {
 			rs.next();
 			usuarios = rs.getInt(1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao contar usuarios cadastrados: " + e.getMessage());
 		}
 
-		return usuarios == 0;
+		return (usuarios == 0);
 	}
 }

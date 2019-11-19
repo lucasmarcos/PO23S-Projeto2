@@ -46,6 +46,7 @@ public class Main extends Application {
 	}
 
 	public static void logar() {
+		stage.setMaximized(false);
 		stage.setResizable(false);
 		stage.setScene(loginScene);
 	}
@@ -53,6 +54,7 @@ public class Main extends Application {
 	public static void cadastrarFornecedor() {
 		fornecedorController.setFornecedor(null);
 		
+		stage.setMaximized(false);
 		stage.setResizable(false);
 		stage.setScene(fornecedorScene);
 	}
@@ -60,11 +62,13 @@ public class Main extends Application {
 	public static void alterarFornecedor(Fornecedor fornecedor) {
 		fornecedorController.setFornecedor(fornecedor);
 		
+		stage.setMaximized(false);
 		stage.setResizable(false);
 		stage.setScene(fornecedorScene);
 	}
 
 	public static void cadastrarUsuario() {
+		stage.setMaximized(false);
 		stage.setResizable(false);
 		stage.setScene(cadastroScene);
 	}
@@ -84,7 +88,7 @@ public class Main extends Application {
 		DAOUsuario daoUsuario = new DAOUsuario(conexao);
 		DAOFornecedor daoFornecedor = new DAOFornecedor(conexao);
 
-		boolean primeiroUsuario = daoUsuario.primeiroLogin();;
+		boolean primeiroUsuario = daoUsuario.primeiroLogin();
 
 		try {
 			// tela de login
@@ -107,7 +111,7 @@ public class Main extends Application {
 
 			cadastroScene = new Scene(root);
 
-			// tela de cadastro e alteraçao de fornecedores
+			// tela de cadastro e alteracao de fornecedores
 			caminho = getClass().getResource("/Fornecedor.fxml");
 			loader = new FXMLLoader(caminho);
 			root = (Parent) loader.load();
@@ -127,7 +131,7 @@ public class Main extends Application {
 
 			listaFornecedoresScene = new Scene(root);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao inicializar as telas: " + e.getMessage());
 		}
 
 		if(primeiroUsuario) {

@@ -20,7 +20,7 @@ public class Conexao {
 		try {
 			connection = DriverManager.getConnection(uri, usuario, senha);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao estabelecer conexao com o banco de dados: " + e.getMessage());
 		}
 	}
 
@@ -28,8 +28,9 @@ public class Conexao {
 		try {
 			Statement stm = connection.createStatement();
 			stm.execute(sql);
+			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao executar sql: " + e.getMessage());
 		}
 
 		return false;
@@ -42,7 +43,7 @@ public class Conexao {
 			Statement stm = connection.createStatement();
 			rs = stm.executeQuery(sql);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao executar busca sql: " + e.getMessage());
 		}
 		
 		return rs;

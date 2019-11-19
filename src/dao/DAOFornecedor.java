@@ -5,7 +5,6 @@ import entidades.Fornecedor;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import main.Main;
 
 public class DAOFornecedor {
 	private Conexao conexao;
@@ -42,7 +41,7 @@ public class DAOFornecedor {
 			fornecedor.setBairro(rs.getString("bairro"));
 			fornecedor.setCep(rs.getString("cep"));
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao buscar fornecedor: " + e.getMessage());
 		}
 		
 		return fornecedor;
@@ -69,7 +68,7 @@ public class DAOFornecedor {
 				lista.add(fornecedor);
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao pesquisar fornecedores: " + e.getMessage());
 		}
 		
 		return lista;
@@ -92,7 +91,7 @@ public class DAOFornecedor {
 		try {
 			conexao.executarSQL(sql);
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro ao deletar fornecedor: " + e.getMessage());
 		}
 	}
 }

@@ -149,7 +149,7 @@ public class ListarFornecedoresController implements Initializable {
 			botao_cadastrar_usuario.setDisable(!usuarioAtual.getAdministrador());
 		}
 
-		usuario.setText("Usuário: " + usuarioAtual.getNome());
+		usuario.setText("Usuario Atual: " + usuarioAtual.getNome());
 
 		if (usuarioAtual.getAdministrador()) {
 			nivel.setText("Administrador");
