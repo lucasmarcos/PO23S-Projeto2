@@ -28,11 +28,11 @@ public class DAOFornecedor {
 		Fornecedor fornecedor = new Fornecedor();
 		String sql = "SELECT codigo, nome, telefone, cnpj, rua, bairro, cep " + 
 			"FROM fornecedor WHERE codigo = " + codigo + ";";
-		
+
 		try {
 			ResultSet rs = conexao.buscar(sql);
 			rs.next();
-			
+
 			fornecedor.setCodigo(rs.getInt("codigo"));
 			fornecedor.setNome(rs.getString("nome"));
 			fornecedor.setTelefone(rs.getString("telefone"));
@@ -43,16 +43,16 @@ public class DAOFornecedor {
 		} catch(Exception e) {
 			System.out.println("Erro ao buscar fornecedor: " + e.getMessage());
 		}
-		
+
 		return fornecedor;
 	}
 
 	public List<Fornecedor> pesquisar(String campo, String filtro) {
 		List<Fornecedor> lista = new ArrayList<Fornecedor>();
-		
+
 		String sql = "SELECT codigo, nome, telefone, cnpj, rua, bairro, cep " + 
 			"FROM fornecedor WHERE " + campo + " ILIKE '%" + filtro + "%';";
-		
+
 		try {
 			ResultSet rs = conexao.buscar(sql);
 			while(rs.next()) {
@@ -64,13 +64,13 @@ public class DAOFornecedor {
 				fornecedor.setRua(rs.getString("rua"));
 				fornecedor.setBairro(rs.getString("bairro"));
 				fornecedor.setCep(rs.getString("cep"));
-				
+
 				lista.add(fornecedor);
 			}
 		} catch(Exception e) {
 			System.out.println("Erro ao pesquisar fornecedores: " + e.getMessage());
 		}
-		
+
 		return lista;
 	}
 

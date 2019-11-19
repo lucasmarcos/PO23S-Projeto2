@@ -24,6 +24,10 @@ public class Conexao {
 		}
 	}
 
+	private boolean criarTabelas() {
+		return true;
+	}
+
 	public boolean executarSQL(String sql) {
 		try {
 			Statement stm = connection.createStatement();
@@ -38,14 +42,14 @@ public class Conexao {
 
 	public ResultSet buscar(String sql) {
 		ResultSet rs = null;
-		
+
 		try {
 			Statement stm = connection.createStatement();
 			rs = stm.executeQuery(sql);
 		} catch (Exception e) {
 			System.out.println("Erro ao executar busca sql: " + e.getMessage());
 		}
-		
+
 		return rs;
 	}
 }

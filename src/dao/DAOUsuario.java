@@ -24,7 +24,7 @@ public class DAOUsuario {
 	public Usuario buscar(int codigo) {
 		Usuario usuario = new Usuario();
 		String sql = "SELECT codigo, nome, email, senha, administrador FROM usuario WHERE codigo = " + codigo + ";";
-		
+
 		ResultSet rs = conexao.buscar(sql);
 		try {
 			rs.next();
@@ -36,7 +36,7 @@ public class DAOUsuario {
 		} catch(Exception e) {
 			System.out.println("Erro ao buscar usuario: " + e.getMessage());
 		}
-		
+
 		return usuario;
 	}
 
@@ -44,7 +44,7 @@ public class DAOUsuario {
 		String sql = "SELECT codigo FROM usuario WHERE" +
 			" email = '" + email +
 			"' AND senha = '" + senha + "';";
-		
+
 		ResultSet rs = conexao.buscar(sql);
 		try {
 			rs.next();

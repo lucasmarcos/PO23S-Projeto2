@@ -30,12 +30,12 @@ public class Main extends Application {
 
 	private static Scene listaFornecedoresScene;
 	private static ListarFornecedoresController listaFornecedoresController;
-	
+
 	private static Stage stage;
 
 	public static void listarFornecedores() {
 		listaFornecedoresController.atualizar();
-		
+
 		stage.setResizable(true);
 		stage.setScene(listaFornecedoresScene);
 	}
@@ -53,7 +53,7 @@ public class Main extends Application {
 
 	public static void cadastrarFornecedor() {
 		fornecedorController.setFornecedor(null);
-		
+
 		stage.setMaximized(false);
 		stage.setResizable(false);
 		stage.setScene(fornecedorScene);
@@ -61,7 +61,7 @@ public class Main extends Application {
 
 	public static void alterarFornecedor(Fornecedor fornecedor) {
 		fornecedorController.setFornecedor(fornecedor);
-		
+
 		stage.setMaximized(false);
 		stage.setResizable(false);
 		stage.setScene(fornecedorScene);
@@ -143,7 +143,7 @@ public class Main extends Application {
 
 		stage.show();
 	}
-	
+
 	public static void sair() {
 		stage.close();
 	}
