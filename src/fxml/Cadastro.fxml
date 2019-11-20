@@ -29,8 +29,8 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="label_senha" text="As senhas não conferem" textFill="RED" visible="false" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
-      <Label fx:id="label_primerio" text="Prímeiro" textFill="#fa8214" visible="false" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER"/>
+      <Label fx:id="label_erro" text="" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
+      <Label fx:id="label_primerio" text="Primeiro Usuario" textFill="#fa8214" visible="false" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER"/>
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

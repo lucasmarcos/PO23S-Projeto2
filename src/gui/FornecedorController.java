@@ -25,10 +25,9 @@ public class FornecedorController {
 			bairro.setText(fornecedor.getBairro());
 			cep.setText(fornecedor.getCep());
 
-			label_alterando.setVisible(true);
-			label_alterando.setText("Alterando o Fornecedor de Código " + fornecedor.getCodigo());
+			label_alterando.setText("Alterando o Fornecedor de Codigo " + fornecedor.getCodigo());
 		} else {
-			label_alterando.setVisible(false);
+			label_alterando.setText("");
 		}
 	}
 
@@ -80,11 +79,29 @@ public class FornecedorController {
 		} else {
 			alterar = true;
 		}
-
+        
+        if(nome.getText().length() == 0) {
+            label_erro.setText("Nome vazio");
+            nome.requestFocus();
+            return;
+        }
 		fornecedor.setNome(nome.getText());
-		fornecedor.setTelefone(telefone.getText());
-		fornecedor.setCnpj(cnpj.getText());
-		fornecedor.setRua(rua.getText());
+
+        if(telefone.getText().length() == 0) {
+            label_erro.setText("Telefone vazio");
+            telefone.requestFocus();
+            return;
+        }
+        fornecedor.setTelefone(telefone.getText());
+
+        if(cnpj.getText().length() == 0) {
+            label_erro.setText("CNPJ vazio");
+            cnpj.requestFocus();
+            return;
+        }
+        fornecedor.setCnpj(cnpj.getText());
+	
+        fornecedor.setRua(rua.getText());
 		fornecedor.setBairro(bairro.getText());
 		fornecedor.setCep(cep.getText());
 

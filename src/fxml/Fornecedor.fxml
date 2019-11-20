@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane hgap="10.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.FornecedorController">
+<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FornecedorController">
   <children>
       <TextField fx:id="nome" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <TextField fx:id="telefone" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -17,9 +22,18 @@
       <TextField fx:id="rua" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <TextField fx:id="bairro" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <TextField fx:id="cep" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <Label text="Nome" GridPane.rowIndex="3" />
-      <Label text="Telefone" GridPane.rowIndex="4" />
-      <Label text="CNPJ" GridPane.rowIndex="5" />
+      <Label text="Nome" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label text="Telefone" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label text="CNPJ" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
       <Label text="Rua" GridPane.rowIndex="6" />
       <Label text="Bairro" GridPane.rowIndex="7" />
       <Label text="CEP" GridPane.rowIndex="8" />
@@ -30,7 +44,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="label_alterando" text="Alterando o Fornecedor de ID" textFill="#100075" visible="false" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" />
+      <Label fx:id="label_alterando" textFill="#100075" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" />
       <Label fx:id="label_erro" textFill="#c60202" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
    </children>
    <padding>
@@ -40,4 +54,16 @@
       <ColumnConstraints halignment="RIGHT" />
       <ColumnConstraints hgrow="ALWAYS" />
    </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

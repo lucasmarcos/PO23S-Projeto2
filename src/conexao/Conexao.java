@@ -26,7 +26,7 @@ public class Conexao {
 	}
 
 	private void criarTabelas() {
-		String tabelaUsuario = "CREATE TABLE usuario (" +
+		String tabelaUsuario = "CREATE TABLE IF NOT EXISTS usuario (" +
     		"codigo SERIAL PRIMARY KEY," +
     		"nome VARCHAR," +
     		"email VARCHAR," +
@@ -34,7 +34,7 @@ public class Conexao {
     		"administrador BOOLEAN" +
 		");";
 		
-		String tabelaFornecedor = "CREATE TABLE fornecedor (" +
+		String tabelaFornecedor = "CREATE TABLE IF NOT EXISTS fornecedor (" +
     		"codigo SERIAL PRIMARY KEY," +
     		"nome VARCHAR," +
     		"telefone VARCHAR," +

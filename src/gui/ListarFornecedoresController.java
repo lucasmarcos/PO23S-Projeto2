@@ -1,9 +1,7 @@
 package gui;
 
 import dao.DAOFornecedor;
-import dao.DAOUsuario;
 import entidades.Usuario;
-import javafx.scene.control.*;
 import main.Main;
 import entidades.Fornecedor;
 
@@ -14,7 +12,14 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 public class ListarFornecedoresController implements Initializable {
 	private DAOFornecedor daoFornecedor;
@@ -78,7 +83,6 @@ public class ListarFornecedoresController implements Initializable {
 	void alterar(ActionEvent event) {
 		Fornecedor fornecedor = fornecedores.getSelectionModel().getSelectedItem();
 		if(fornecedor != null) {
-			daoFornecedor.deletar(fornecedor);
 			Main.alterarFornecedor(fornecedor);
 		}
 	}
@@ -88,7 +92,7 @@ public class ListarFornecedoresController implements Initializable {
 		Fornecedor fornecedor = fornecedores.getSelectionModel().getSelectedItem();
 		if(fornecedor != null) {
 			daoFornecedor.deletar(fornecedor);
-			filtrar(new ActionEvent());
+			filtrar(null);
 		}
 	}
 
@@ -103,7 +107,7 @@ public class ListarFornecedoresController implements Initializable {
 	}
 
 	@FXML
-	void filtrar(ActionEvent event) {
+	void filtrar(KeyEvent event) {
 		String c = "";
 		switch (campo.getSelectionModel().getSelectedIndex()) {
 			case 0:
@@ -129,7 +133,7 @@ public class ListarFornecedoresController implements Initializable {
 		List<Fornecedor> lista = daoFornecedor.pesquisar(c, filtro.getText());
 
 		fornecedores.getItems().clear();
-		for (int i = 0; i < lista.size(); i++) {
+		for(int i = 0; i < lista.size(); i++) {
 			fornecedores.getItems().add(lista.get(i));
 		}
 	}
@@ -140,13 +144,12 @@ public class ListarFornecedoresController implements Initializable {
 	}
 
 	public void atualizar() {
-		filtrar(new ActionEvent());
+		filtrar(null);
 
 		if(usuarioAtual != null) {
 			botao_alterar.setDisable(!usuarioAtual.getAdministrador());
 			botao_remover.setDisable(!usuarioAtual.getAdministrador());
 			botao_cadastrar_fornecedor.setDisable(!usuarioAtual.getAdministrador());
-			botao_cadastrar_usuario.setDisable(!usuarioAtual.getAdministrador());
 		}
 
 		usuario.setText("Usuario Atual: " + usuarioAtual.getNome());

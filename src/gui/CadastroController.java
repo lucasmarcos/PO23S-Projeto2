@@ -45,18 +45,37 @@ public class CadastroController {
 	private Button botao_voltar;
 
 	@FXML
-	private Label label_senha;
+	private Label label_erro;
 
 	@FXML
 	private Label label_primerio;
+        
+        private boolean admin = false;
+        
+        public void setAdmin(boolean admin) {
+            this.admin = admin;
+            administrador.setDisable(!admin);
+        }
 
 	@FXML
 	void cadastrar(ActionEvent event) {
 		Usuario usuario = new Usuario();
-		usuario.setNome(nome.getText());
-		usuario.setEmail(email.getText());
 		usuario.setAdministrador(administrador.isSelected());
 
+        if(nome.getText().length() == 0) {
+            label_erro.setText("Nome vazio");
+            nome.requestFocus();
+            return;
+        }
+		usuario.setNome(nome.getText());
+        
+        if(email.getText().length() == 0) {
+            label_erro.setText("E-mail vazio");
+            email.requestFocus();
+            return;
+        }
+		usuario.setEmail(email.getText());
+        
 		if(senha.getText().equals(verificar_senha.getText()) && !senha.getText().isEmpty()) {
 			usuario.setSenha(senha.getText());
 			daoUsuario.inserir(usuario);
@@ -66,10 +85,11 @@ public class CadastroController {
 			} else {
 				setPrimeiroUsuario(false);
 				limpar();
+                Main.setProximoLogin(usuario.getEmail());
 				Main.logar();
 			}
 		} else {
-			label_senha.setVisible(true);
+			label_erro.setText("As senhas não conferem");
 			senha.clear();
 			verificar_senha.clear();
 			senha.requestFocus();

@@ -25,6 +25,10 @@ public class LoginController {
 	public void setDaoUsuario(DAOUsuario daoUsuario) {
 		this.daoUsuario = daoUsuario;
 	}
+    
+    public void setEmail(String email) {
+        usuario.setText(email);
+    }
 
 	@FXML
 	void entrar(ActionEvent event) {
@@ -38,8 +42,9 @@ public class LoginController {
 		} else {
 			info.setVisible(true);
 			senha.clear();
-			usuario.requestFocus();
 		}
+        
+        usuario.requestFocus();
 	}
 
 	@FXML

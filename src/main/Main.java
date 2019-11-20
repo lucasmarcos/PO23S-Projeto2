@@ -42,6 +42,7 @@ public class Main extends Application {
 
 	public static void listarFornecedores(Usuario usuario) {
 		listaFornecedoresController.setUsuarioAtual(usuario);
+        cadastroController.setAdmin(usuario.getAdministrador());
 		listarFornecedores();
 	}
 
@@ -72,6 +73,10 @@ public class Main extends Application {
 		stage.setResizable(false);
 		stage.setScene(cadastroScene);
 	}
+    
+    public static void setProximoLogin(String email) {
+        loginController.setEmail(email);
+    }
 
 	public static void main(String args[]) {
 		launch(args);
