@@ -19,19 +19,40 @@ public class Conexao {
 
 		try {
 			connection = DriverManager.getConnection(uri, usuario, senha);
+			criarTabelas();
 		} catch (Exception e) {
 			System.out.println("Erro ao estabelecer conexao com o banco de dados: " + e.getMessage());
 		}
 	}
 
-	private boolean criarTabelas() {
-		return true;
+	private void criarTabelas() {
+		String tabelaUsuario = "CREATE TABLE usuario (" +
+    		"codigo SERIAL PRIMARY KEY," +
+    		"nome VARCHAR," +
+    		"email VARCHAR," +
+    		"senha VARCHAR," +
+    		"administrador BOOLEAN" +
+		");";
+		
+		String tabelaFornecedor = "CREATE TABLE fornecedor (" +
+    		"codigo SERIAL PRIMARY KEY," +
+    		"nome VARCHAR," +
+    		"telefone VARCHAR," +
+    		"cnpj VARCHAR," +
+    		"rua VARCHAR," +
+    		"bairro VARCHAR," +
+    		"cep VARCHAR" +
+		");";
+
+		executarSQL(tabelaUsuario);
+		executarSQL(tabelaFornecedor);
 	}
 
 	public boolean executarSQL(String sql) {
 		try {
 			Statement stm = connection.createStatement();
 			stm.execute(sql);
+			stm.close();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Erro ao executar sql: " + e.getMessage());
