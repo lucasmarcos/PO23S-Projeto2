@@ -1,8 +1,10 @@
 package gui;
 
-import dao.DAOFornecedor;
-import entidades.Usuario;
+import javafx.scene.input.MouseEvent;
 import main.Main;
+import dao.DAOFornecedor;
+import dao.DAOUsuario;
+import entidades.Usuario;
 import entidades.Fornecedor;
 
 import java.net.URL;
@@ -22,17 +24,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
 public class ListarFornecedoresController implements Initializable {
+	private DAOUsuario daoUsuario;
+
 	private DAOFornecedor daoFornecedor;
 
 	private Usuario usuarioAtual;
-
-	public void setDaoFornecedor(DAOFornecedor daoFornecedor) {
-		this.daoFornecedor = daoFornecedor;
-	}
-
-	public void setUsuarioAtual(Usuario usuarioAtual) {
-		this.usuarioAtual = usuarioAtual;
-	}
 
 	@FXML
 	private Label nivel;
@@ -74,10 +70,19 @@ public class ListarFornecedoresController implements Initializable {
 	private Button botao_cadastrar_fornecedor;
 
 	@FXML
-	private Button botao_cadastrar_usuario;
-
-	@FXML
 	private Label usuario;
+
+	public void setDaoUsuario(DAOUsuario daoUsuario) {
+		this.daoUsuario = daoUsuario;
+	}
+
+	public void setDaoFornecedor(DAOFornecedor daoFornecedor) {
+		this.daoFornecedor = daoFornecedor;
+	}
+
+	public void setUsuarioAtual(Usuario usuarioAtual) {
+		this.usuarioAtual = usuarioAtual;
+	}
 
 	@FXML
 	void alterar(ActionEvent event) {
@@ -93,6 +98,8 @@ public class ListarFornecedoresController implements Initializable {
 		if(fornecedor != null) {
 			daoFornecedor.deletar(fornecedor);
 			filtrar(null);
+			botao_alterar.setVisible(false);
+			botao_remover.setVisible(false);
 		}
 	}
 
@@ -104,6 +111,12 @@ public class ListarFornecedoresController implements Initializable {
 	@FXML
 	void cadastrarUsuario(ActionEvent event) {
 		Main.cadastrarUsuario();
+	}
+
+	@FXML
+	void removerUsuarioAtual(ActionEvent event) {
+		daoUsuario.remover(usuarioAtual);
+		Main.logar();
 	}
 
 	@FXML
@@ -171,5 +184,19 @@ public class ListarFornecedoresController implements Initializable {
 		colunaRua.setCellValueFactory(new PropertyValueFactory<Fornecedor, String>("rua"));
 		colunaBairro.setCellValueFactory(new PropertyValueFactory<Fornecedor, String>("bairro"));
 		colunaCep.setCellValueFactory(new PropertyValueFactory<Fornecedor, String>("cep"));
+
+		botao_alterar.setVisible(false);
+		botao_remover.setVisible(false);
+	}
+
+	@FXML
+	void cliqueLista(MouseEvent event) {
+		if(fornecedores.getSelectionModel().getSelectedIndex() >= 0) {
+			botao_alterar.setVisible(true);
+			botao_remover.setVisible(true);
+		} else {
+			botao_alterar.setVisible(false);
+			botao_remover.setVisible(false);
+		}
 	}
 }

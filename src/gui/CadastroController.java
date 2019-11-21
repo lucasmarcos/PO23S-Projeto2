@@ -20,7 +20,9 @@ public class CadastroController {
 	public void setPrimeiroUsuario(boolean primeiroUsuario) {
 		this.primeiroUsuario = primeiroUsuario;
 
-		label_primerio.setVisible(primeiroUsuario);
+		if(primeiroUsuario) label_primerio.setText("Primerio Usuario (Administrador)");
+		else label_primerio.setText("");
+
 		administrador.setSelected(primeiroUsuario);
 		administrador.setDisable(primeiroUsuario);
 		botao_voltar.setVisible(!primeiroUsuario);
@@ -50,12 +52,12 @@ public class CadastroController {
 	@FXML
 	private Label label_primerio;
         
-        private boolean admin = false;
+    private boolean admin = false;
         
-        public void setAdmin(boolean admin) {
-            this.admin = admin;
-            administrador.setDisable(!admin);
-        }
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+        administrador.setDisable(!admin);
+    }
 
 	@FXML
 	void cadastrar(ActionEvent event) {
@@ -76,7 +78,7 @@ public class CadastroController {
         }
 		usuario.setEmail(email.getText());
         
-		if(senha.getText().equals(verificar_senha.getText()) && !senha.getText().isEmpty()) {
+		if(senha.getText().equals(verificar_senha.getText()) && !senha.getText().equals("")) {
 			usuario.setSenha(senha.getText());
 			daoUsuario.inserir(usuario);
 			if(!primeiroUsuario) {
@@ -85,11 +87,10 @@ public class CadastroController {
 			} else {
 				setPrimeiroUsuario(false);
 				limpar();
-                Main.setProximoLogin(usuario.getEmail());
-				Main.logar();
+				Main.logar(usuario.getEmail());
 			}
 		} else {
-			label_erro.setText("As senhas não conferem");
+			label_erro.setText("As senhas nao conferem");
 			senha.clear();
 			verificar_senha.clear();
 			senha.requestFocus();
@@ -108,5 +109,7 @@ public class CadastroController {
 		nome.clear();
 		email.clear();
 		administrador.setSelected(false);
+
+		nome.requestFocus();
 	}
 }

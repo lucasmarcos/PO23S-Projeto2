@@ -47,9 +47,19 @@ public class Main extends Application {
 	}
 
 	public static void logar() {
-		stage.setMaximized(false);
-		stage.setResizable(false);
-		stage.setScene(loginScene);
+		if(loginController.cadastroAdmin()) {
+			cadastroController.setPrimeiroUsuario(true);
+			cadastrarUsuario();
+		} else {
+			stage.setMaximized(false);
+			stage.setResizable(false);
+			stage.setScene(loginScene);
+		}
+	}
+
+	public static void logar(String email) {
+		loginController.setEmail(email);
+		logar();
 	}
 
 	public static void cadastrarFornecedor() {
@@ -74,11 +84,7 @@ public class Main extends Application {
 		stage.setScene(cadastroScene);
 	}
     
-    public static void setProximoLogin(String email) {
-        loginController.setEmail(email);
-    }
-
-	public static void main(String args[]) {
+    public static void main(String args[]) {
 		launch(args);
 	}
 
@@ -92,8 +98,6 @@ public class Main extends Application {
 
 		DAOUsuario daoUsuario = new DAOUsuario(conexao);
 		DAOFornecedor daoFornecedor = new DAOFornecedor(conexao);
-
-		boolean primeiroUsuario = daoUsuario.primeiroLogin();
 
 		try {
 			// tela de login
@@ -132,6 +136,7 @@ public class Main extends Application {
 			root = (Parent) loader.load();
 
 			listaFornecedoresController = (ListarFornecedoresController) loader.getController();
+			listaFornecedoresController.setDaoUsuario(daoUsuario);
 			listaFornecedoresController.setDaoFornecedor(daoFornecedor);
 
 			listaFornecedoresScene = new Scene(root);
@@ -139,13 +144,7 @@ public class Main extends Application {
 			System.out.println("Erro ao inicializar as telas: " + e.getMessage());
 		}
 
-		if(primeiroUsuario) {
-			cadastroController.setPrimeiroUsuario(primeiroUsuario);
-			cadastrarUsuario();
-		} else {
-			logar();
-		}
-
+		logar();
 		stage.show();
 	}
 

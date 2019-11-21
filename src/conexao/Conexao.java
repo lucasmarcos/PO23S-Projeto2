@@ -52,7 +52,6 @@ public class Conexao {
 		try {
 			Statement stm = connection.createStatement();
 			stm.execute(sql);
-			stm.close();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Erro ao executar sql: " + e.getMessage());

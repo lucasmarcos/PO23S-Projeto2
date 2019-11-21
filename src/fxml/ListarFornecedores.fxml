@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListarFornecedoresController">
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8.0.202-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListarFornecedoresController">
    <children>
       <HBox VBox.vgrow="NEVER">
          <children>
@@ -26,30 +20,28 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="nivel" alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Nivel Atual" textFill="#6716f2" HBox.hgrow="NEVER" />
+            <Label fx:id="nivel" alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textFill="#6716f2" HBox.hgrow="NEVER" />
          </children>
       </HBox>
       <HBox spacing="10.0" VBox.vgrow="NEVER">
          <children>
             <TextField fx:id="filtro" onKeyTyped="#filtrar" promptText="Filtrar..." HBox.hgrow="ALWAYS" />
-            <ChoiceBox fx:id="campo" HBox.hgrow="NEVER" />
+            <ChoiceBox fx:id="campo" minWidth="128.0" HBox.hgrow="NEVER" />
          </children>
       </HBox>
       <HBox spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox spacing="10.0" HBox.hgrow="NEVER">
+            <VBox spacing="20.0" HBox.hgrow="NEVER">
                <children>
-                  <Button fx:id="botao_remover" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#remover" text="Remover" />
-                  <Button fx:id="botao_alterar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#alterar" text="Alterar" />
-                  <Separator VBox.vgrow="NEVER">
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </Separator>
                   <Button fx:id="botao_cadastrar_fornecedor" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cadastrarFornecedor" text="Cadastrar" />
+                  <Button fx:id="botao_remover" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#remover" text="Remover" textFill="#a40e0e" />
+                  <Button fx:id="botao_alterar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#alterar" text="Alterar" />
                </children>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
             </VBox>
-            <TableView fx:id="fornecedores" HBox.hgrow="ALWAYS">
+            <TableView fx:id="fornecedores" onMouseClicked="#cliqueLista" HBox.hgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="colunaNome" editable="false" minWidth="64.0" text="Nome" />
                   <TableColumn fx:id="colunaTelefone" editable="false" minWidth="64.0" text="Telefone" />
@@ -67,7 +59,8 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" spacing="10.0" VBox.vgrow="NEVER">
          <children>
-            <Label fx:id="usuario" maxWidth="1.7976931348623157E308" text="Usuario Atual" HBox.hgrow="ALWAYS" />
+            <Label fx:id="usuario" maxWidth="1.7976931348623157E308" textFill="#363636" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#removerUsuarioAtual" text="Remover Usuario Atual" textFill="#8d0a0a" />
             <Button fx:id="botao_cadastrar_usuario" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Cadastrar Novo Usuario" HBox.hgrow="NEVER" />
             <Button mnemonicParsing="false" onAction="#sair" text="Sair" HBox.hgrow="NEVER" />
          </children>

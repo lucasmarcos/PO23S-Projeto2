@@ -67,6 +67,10 @@ public class FornecedorController {
 		rua.clear();
 		bairro.clear();
 		cep.clear();
+		label_alterando.setText("");
+		label_erro.setText("");
+
+		nome.requestFocus();
 
 		Main.listarFornecedores();
 	}

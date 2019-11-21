@@ -40,6 +40,11 @@ public class DAOUsuario {
 		return usuario;
 	}
 
+	public void remover(Usuario usuario) {
+		String sql = "DELETE FROM usuario WHERE codigo = " + usuario.getCodigo() + ";";
+		conexao.executarSQL(sql);
+	}
+
 	public Usuario login(String email, String senha) {
 		String sql = "SELECT codigo FROM usuario WHERE" +
 			" email = '" + email +
@@ -56,7 +61,7 @@ public class DAOUsuario {
 	}
 
 	public boolean primeiroLogin() {
-		String sql = "SELECT COUNT(codigo) FROM usuario;";
+		String sql = "SELECT COUNT(codigo) FROM usuario WHERE administrador = true;";
 		ResultSet rs = conexao.buscar(sql);
 		int usuarios = 0;
 

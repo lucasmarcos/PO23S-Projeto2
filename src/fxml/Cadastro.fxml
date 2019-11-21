@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane hgap="10.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastroController">
+<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.202-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastroController">
    <children>
       <TextField fx:id="nome" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
       <TextField fx:id="email" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
@@ -19,20 +19,44 @@
       <PasswordField fx:id="verificar_senha" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
       <CheckBox fx:id="administrador" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Administrador" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
       <Button defaultButton="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cadastrar" text="Salvar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" />
-      <Label text="Nome" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-      <Label text="E-mail" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-      <Label text="Senha" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-      <Label text="Confirmar Senha" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+      <Label text="Nome" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label text="E-mail" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label text="Senha" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label text="Confirmar Senha" textFill="#0a4651" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
       <Button fx:id="botao_voltar" cancelButton="true" mnemonicParsing="false" onAction="#voltar" text="Voltar" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
       <Label contentDisplay="CENTER" text="Usuário" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="label_erro" text="" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
-      <Label fx:id="label_primerio" text="Primeiro Usuario" textFill="#fa8214" visible="false" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER"/>
+      <Label fx:id="label_erro" text="" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label fx:id="label_primerio" textFill="#fa8214" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

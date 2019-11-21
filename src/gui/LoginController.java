@@ -22,6 +22,10 @@ public class LoginController {
 
 	private DAOUsuario daoUsuario;
 
+	public boolean cadastroAdmin() {
+		return daoUsuario.primeiroLogin();
+	}
+
 	public void setDaoUsuario(DAOUsuario daoUsuario) {
 		this.daoUsuario = daoUsuario;
 	}

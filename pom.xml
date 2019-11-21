@@ -8,21 +8,6 @@
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<configuration>
-						<archive>
-							<manifest>
-								<mainClass>main.Main</mainClass>
-							</manifest>
-						</archive>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-
 		<resources>
 			<resource>
 				<directory>src/fxml</directory>
