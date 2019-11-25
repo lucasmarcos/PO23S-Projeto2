@@ -146,6 +146,8 @@ public class ListarFornecedoresController implements Initializable {
 		List<Fornecedor> lista = daoFornecedor.pesquisar(c, filtro.getText());
 
 		fornecedores.getItems().clear();
+		botao_alterar.setVisible(false);
+		botao_remover.setVisible(false);
 		for(int i = 0; i < lista.size(); i++) {
 			fornecedores.getItems().add(lista.get(i));
 		}
