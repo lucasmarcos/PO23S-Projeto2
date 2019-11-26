@@ -109,6 +109,8 @@ public class CadastroController {
 		nome.clear();
 		email.clear();
 		administrador.setSelected(false);
+                label_erro.setText("");
+                label_primerio.setText("");
 
 		nome.requestFocus();
 	}

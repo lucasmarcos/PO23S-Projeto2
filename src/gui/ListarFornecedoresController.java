@@ -116,7 +116,7 @@ public class ListarFornecedoresController implements Initializable {
 	@FXML
 	void removerUsuarioAtual(ActionEvent event) {
 		daoUsuario.remover(usuarioAtual);
-		Main.logar();
+		Main.logar("");
 	}
 
 	@FXML
